@@ -49,6 +49,12 @@ public class AssetNameParser
         
         result.prefix = string.Join("_", prefixTokens);
         result.tokens.RemoveRange(0, prefixTokens.Count);
+
+        if (!foundClass)
+        {
+            result.isValid = false;
+            result.errorMessage = "Class not found";
+        }
         
         List<string> cleaned  = new List<string>();
         foreach (string token in result.tokens)

@@ -67,4 +67,16 @@ public class AssetNameParserTests
         Assert.AreEqual(1, result.tokens.Count);
         Assert.AreEqual("Sensor", result.tokens[0]);
     }
+    
+    [Test]
+    public void Parse_UnknownShipClass_MarksAsInvalid()
+    {
+        var result = _parser.Parse("NightHarbinger_ABC_Module_Eng_2_n.tif");
+    
+        Assert.AreEqual("NightHarbinger_ABC_Module_Eng_2", result.prefix);
+        Assert.AreEqual("_n", result.suffix);
+        Assert.AreEqual(0, result.tokens.Count);
+        Assert.IsFalse(result.isValid);
+        Assert.AreEqual("Class not found", result.errorMessage);
+    }
 }

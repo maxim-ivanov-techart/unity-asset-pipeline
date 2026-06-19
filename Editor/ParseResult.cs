@@ -5,6 +5,8 @@ public class ParseResult
     public string prefix;
     public string suffix;
     public List<string> tokens;
+    public bool isValid = true;
+    public string errorMessage;
 
     public string BuildName()
     {
